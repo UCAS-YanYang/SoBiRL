@@ -9,7 +9,7 @@ Implementation of "Bilevel Reinforcement Learning via the Development of Hyper-g
 - CUDA 11.6
 - imitation 1.0.0
 - stable_baselines3 2.3.2
-- wandb 0.16.0 (We heavily rely on Weights & Biases for visualization and monitoring)
+- wandb 0.17.0 (We heavily rely on Weights & Biases for visualization and monitoring)
 
 
 ## Get Started

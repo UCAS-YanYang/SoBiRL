@@ -1,0 +1,53 @@
+# SoBiRL_config.yaml
+test: false
+bialg: 'SoBiRL'
+env_id: "BeamRiderNoFrameskip-v4"
+seed: 6
+torch_deterministic: true
+cuda: true
+track: true
+wandb_project_name: "Implementation of SoBiRL"
+capture_video: ture
+buffer_size: 1000000
+gamma: 0.99
+tau: 1.0
+batch_size: 64
+learning_starts: 20000
+policy_lr: 0.0001
+q_lr: 0.0001
+reward_lr: 0.0003
+lr_anneal: 8000000
+update_frequency: 4
+target_network_frequency: 8000
+alternate: 10000
+alpha: 0.2
+autotune: true
+target_entropy_scale: 0.89
+
+# constant step size version
+# policy_lr: 0.00007
+# q_lr: 0.00007
+# reward_lr: 0.0003
+# lr_anneal: 0
+
+# pref_comparisons = DRLHF.PreferenceComparisons(
+#     trajectory_generator,
+#     reward_net,
+#     num_iterations=2000,
+#     fragmenter=fragmenter,
+#     preference_gatherer=gatherer,
+#     reward_trainer=reward_trainer,
+#     comparison_queue_size=3000,
+#     fragment_length=25,
+#     transition_oversampling=1,
+#     initial_comparison_frac=0.07,
+#     allow_variable_horizon=False,
+#     initial_epoch_multiplier=512,
+#     alternate=args.alternate
+# )
+
+# # Begin training
+# pref_comparisons.train(
+#     total_timesteps=20000000,
+#     total_comparisons=9000,
+# )
