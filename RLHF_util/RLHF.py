@@ -1360,13 +1360,8 @@ class PreferenceComparisons(base.BaseImitationAlgorithm):
         schedule = [initial_comparisons] + shares.tolist()
         print(f"Query schedule: {schedule}")
 
-        if self.alternate == 0:
-            timesteps_per_iteration, extra_timesteps = divmod(
-                total_timesteps,
-                self.num_iterations,
-            )
-        else:
-            timesteps_per_iteration = self.alternate
+
+        timesteps_per_iteration = self.alternate
             
         reward_loss = None
         reward_accuracy = None
@@ -1418,8 +1413,7 @@ class PreferenceComparisons(base.BaseImitationAlgorithm):
             # if the number of timesteps per iterations doesn't exactly divide
             # the desired total number of timesteps, we train the agent a bit longer
             # at the end of training (where the reward model is presumably best)
-            if i == self.num_iterations - 1:
-                num_steps += extra_timesteps
+
             with self.logger.accumulate_means("agent"):
                 self.logger.log(f"Training agent for {num_steps} timesteps")
                 self.trajectory_generator.train(steps=num_steps)
@@ -1432,5 +1426,8 @@ class PreferenceComparisons(base.BaseImitationAlgorithm):
             if callback:
                 callback(self._iteration)
             self._iteration += 1
+
+            if i*self.alternate > 4300000:
+                break
 
         return {"reward_loss": reward_loss, "reward_accuracy": reward_accuracy}

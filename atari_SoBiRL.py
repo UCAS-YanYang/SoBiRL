@@ -79,19 +79,11 @@ class Args:
     num_iterations: int = 0
     """the number of iterations (computed in runtime)"""
 
-    # debug
-    debug: bool = False
-    """debug: adjust the args manully"""
-    test: bool = False
-
 args = tyro.cli(Args)
-if args.debug:
-    pass
-else:
-    args.config_path = "alg_config/" + args.bialg + "_config.yaml"   
-    # "alg_config/SoBiRL_config.yaml" 
-    """algorithm config path"""
-    args = load_config(args.config_path,args)
+
+args.config_path = "alg_config/" + args.bialg + "_config.yaml"   
+"""algorithm config path"""
+args = load_config(args.config_path,args)
 
 device = th.device("cuda" if th.cuda.is_available() else "cpu")
 rng = np.random.default_rng()
@@ -170,8 +162,7 @@ pref_comparisons = RLHF.PreferenceComparisons(
     alternate=args.alternate
 )
 
-# Begin training
+# begin training
 pref_comparisons.train(
-    total_timesteps=20000000,
-    total_comparisons=9000,
+    total_comparisons=9000,     # when it is set to 9000, SoBiRL collects 3000 trajectory pairs at 4000000 timesteps
 )
