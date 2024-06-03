@@ -1178,7 +1178,7 @@ class PreferenceComparisons(base.BaseImitationAlgorithm):
         comparison_queue_size: Optional[int] = None,
         fragment_length: int = 100,
         transition_oversampling: float = 1,
-        initial_comparison_frac: float = 0.1,
+        initial_comparisons: int = 600,
         initial_epoch_multiplier: float = 200.0,
         custom_logger: Optional[imit_logger.HierarchicalLogger] = None,
         allow_variable_horizon: bool = False,
@@ -1317,7 +1317,7 @@ class PreferenceComparisons(base.BaseImitationAlgorithm):
         self.preference_gatherer.logger = self.logger
 
         self.fragment_length = fragment_length
-        self.initial_comparison_frac = initial_comparison_frac
+        self.initial_comparisons = initial_comparisons
         self.initial_epoch_multiplier = initial_epoch_multiplier
         self.num_iterations = num_iterations
         self.transition_oversampling = transition_oversampling
@@ -1349,7 +1349,7 @@ class PreferenceComparisons(base.BaseImitationAlgorithm):
             A dictionary with final metrics such as loss and accuracy
             of the reward model.
         """
-        initial_comparisons = int(total_comparisons * self.initial_comparison_frac)
+        initial_comparisons = self.initial_comparisons
         total_comparisons -= initial_comparisons
 
         # Compute the number of comparisons to request at each iteration in advance.

@@ -23,10 +23,13 @@ $ pip install imitation
 $ pip freeze | grep -E 'torch|nvidia' | xargs pip uninstall -y
 $ pip install torch==1.13.0+cu116 torchvision==0.14.0+cu116 torchaudio==0.13.0 --extra-index-url https://download.pytorch.org/whl/cu116
 $ pip install stable-baselines3
+$ pip install -r requirements/requirements-atari.txt
 $ pip install wandb
 ```
 
-To start training, run
+To start training,
+
++ step into sb3.common.monitor and annotate the code
 
 ```bash
 $ conda activate SoBiRL

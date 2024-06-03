@@ -2,7 +2,6 @@ import torch as th
 import gymnasium as gym
 import numpy as np
 
-from seals.util import AutoResetWrapper
 
 from stable_baselines3.common.atari_wrappers import AtariWrapper
 from stable_baselines3.common.env_util import make_vec_env
@@ -11,6 +10,7 @@ from stable_baselines3.common.vec_env import VecFrameStack
 import RLHF_util.RLHF as RLHF
 from sac_subroutine import SAC
 from reward_util.reward_construction import CusCnnRewardNet
+from wrapper_util.env_sample_wrapper import AutoResetWrapper
 from dataclasses import dataclass
 import tyro
 from alg_config.config_loader import load_config
@@ -164,7 +164,7 @@ pref_comparisons = RLHF.PreferenceComparisons(
     comparison_queue_size=3000,
     fragment_length=25,
     transition_oversampling=1,
-    initial_comparison_frac=0.07,
+    initial_comparisons=600,
     allow_variable_horizon=False,
     initial_epoch_multiplier=512,
     alternate=args.alternate

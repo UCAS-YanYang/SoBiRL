@@ -296,10 +296,7 @@ def cus_generate_trajectories(
     while np.any(active):
         # policy gets unwrapped observations (eg as dict, not dictobs)
         with torch.no_grad():
-            if policy.alg_name == "PPO":
-                acts, _, _, _  = agent.get_action_and_value(torch.as_tensor(obs).to(device))
-            if policy.alg_name == "SAC":
-                acts, _, _ = agent.get_action(torch.as_tensor(obs).to(device))
+            acts, _, _ = agent.get_action(torch.as_tensor(obs).to(device))
         acts = acts.cpu().numpy()
         obs, rews, dones, infos = venv.step(acts)
         assert isinstance(
