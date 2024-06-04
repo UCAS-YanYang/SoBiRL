@@ -1334,7 +1334,6 @@ class PreferenceComparisons(base.BaseImitationAlgorithm):
 
     def train(
         self,
-        total_timesteps: int,
         total_comparisons: int,
         callback: Optional[Callable[[int], None]] = None,
     ) -> Mapping[str, Any]:
