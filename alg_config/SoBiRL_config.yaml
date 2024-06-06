@@ -2,7 +2,7 @@
 test: false
 bialg: 'SoBiRL'
 env_id: "BeamRiderNoFrameskip-v4"
-seed: 2
+seed: 3
 torch_deterministic: true
 cuda: true
 track: true
