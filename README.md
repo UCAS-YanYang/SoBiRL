@@ -48,7 +48,7 @@ To start training,
   #     info["episode"] = ep_info
   ```
 
-+ run the following command
++ run the following command to test SoBiRL
 
   ```bash
   $ conda activate SoBiRL
@@ -56,3 +56,9 @@ To start training,
   ```
 
   
++ run the following command to test M-SoBiRL
+
+  ```bash
+  $ conda activate SoBiRL
+  $ python SyntheticProblem/test_MSoBiRL.py
+  ```
