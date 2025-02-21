@@ -1,5 +1,5 @@
 # SoBiRL-Implementation
-Code repository of "Bilevel Reinforcement Learning via the Development of Hyper-gradient without Lower-Level Convexity"
+Code repository of the AISTATS 2025 paper **Bilevel Reinforcement Learning via the Development of Hyper-gradient without Lower-Level Convexity**
 
 ## Dependencies
 
